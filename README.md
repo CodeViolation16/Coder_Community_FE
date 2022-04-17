@@ -4,6 +4,8 @@ A demo application for teaching the FTW course at CoderSchool.
 
 ## Get Started
 
+- Register for a [Cloudinary](https://cloudinary.com/) account. And create a **unsigned** upload preset: https://cloudinary.com/documentation/upload_presets
+
 - Create `/.env`:
 
 ```
