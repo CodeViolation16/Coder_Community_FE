@@ -29,8 +29,8 @@ function ProfileSocialInfo({ profile }) {
     {
       name: "Twitter",
       icon: (
-        <IconStyle color="#D7336D">
-          <InstagramIcon />
+        <IconStyle color="#1877F2">
+          <TwitterIcon />
         </IconStyle>
       ),
       href: twitterLink,
@@ -47,8 +47,8 @@ function ProfileSocialInfo({ profile }) {
     {
       name: "Instagram",
       icon: (
-        <IconStyle color="#1877F2">
-          <TwitterIcon />
+        <IconStyle color="#D7336D">
+          <InstagramIcon />
         </IconStyle>
       ),
       href: instagramLink,

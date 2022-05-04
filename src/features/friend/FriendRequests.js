@@ -17,11 +17,10 @@ function FriendRequests() {
   const [filterName, setFilterName] = useState("");
   const [page, setPage] = React.useState(1);
 
-  const {
-    currentPageUsers: users,
-    totalUsers,
-    totalPages,
-  } = useSelector((state) => state.friend);
+  const { currentPageUsers, usersById, totalUsers, totalPages } = useSelector(
+    (state) => state.friend
+  );
+  const users = currentPageUsers.map((userId) => usersById[userId]);
   const dispatch = useDispatch();
 
   const handleSubmit = (searchQuery) => {

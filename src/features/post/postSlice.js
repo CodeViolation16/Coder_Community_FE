@@ -47,10 +47,10 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
       const newPost = action.payload;
+      if (state.currentPagePosts.length % POSTS_PER_PAGE === 0)
+        state.currentPagePosts.pop();
       state.postsById[newPost._id] = newPost;
       state.currentPagePosts.unshift(newPost._id);
-      if ((state.currentPagePosts.length + 1) % POSTS_PER_PAGE === 0)
-        state.currentPagePosts.pop();
     },
 
     sendPostReactionSuccess(state, action) {
@@ -64,8 +64,6 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const { resetPosts } = slice.actions;
-
 export const getPosts =
   ({ userId, page = 1, limit = POSTS_PER_PAGE }) =>
   async (dispatch) => {
@@ -75,6 +73,7 @@ export const getPosts =
       const response = await apiService.get(`/posts/user/${userId}`, {
         params,
       });
+      if (page === 1) dispatch(slice.actions.resetPosts());
       dispatch(slice.actions.getPostsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));

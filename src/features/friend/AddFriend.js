@@ -17,9 +17,10 @@ function AddFriend() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-  const { currentPageUsers: users, totalUsers } = useSelector(
+  const { currentPageUsers, usersById, totalUsers } = useSelector(
     (state) => state.friend
   );
+  const users = currentPageUsers.map((userId) => usersById[userId]);
   const dispatch = useDispatch();
 
   const handleChangePage = (event, newPage) => {

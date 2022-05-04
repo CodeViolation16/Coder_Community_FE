@@ -165,7 +165,7 @@ function AuthProvider({ children }) {
       email,
       password,
     });
-    console.log(response.data);
+
     const { user, accessToken } = response.data;
     setSession(accessToken);
     dispatch({

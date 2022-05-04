@@ -3,21 +3,22 @@ import { Card, Container } from "@mui/material";
 import Profile from "../features/user/Profile";
 import ProfileCover from "../features/user/ProfileCover";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { getUser } from "../features/user/userSlice";
 import LoadingScreen from "../components/LoadingScreen";
-import { resetPosts } from "../features/post/postSlice";
 
 function UserProfilePage() {
   const params = useParams();
   const userId = params.userId;
   const dispatch = useDispatch();
-  const { selectedUser, isLoading } = useSelector((state) => state.user);
+  const { selectedUser, isLoading } = useSelector(
+    (state) => state.user,
+    shallowEqual
+  );
 
   useEffect(() => {
     if (userId) {
       dispatch(getUser(userId));
-      dispatch(resetPosts());
     }
   }, [dispatch, userId]);
 

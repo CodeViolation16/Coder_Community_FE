@@ -6,6 +6,7 @@ const initialState = {
   isLoading: false,
   error: null,
   currentPageUsers: [],
+  usersById: {},
   totalPages: 1,
 };
 
@@ -27,7 +28,8 @@ const slice = createSlice({
       state.error = null;
 
       const { users, count, totalPages } = action.payload;
-      state.currentPageUsers = users;
+      users.forEach((user) => (state.usersById[user._id] = user));
+      state.currentPageUsers = users.map((user) => user._id);
       state.totalUsers = count;
       state.totalPages = totalPages;
     },
@@ -37,7 +39,8 @@ const slice = createSlice({
       state.error = null;
 
       const { users, count, totalPages } = action.payload;
-      state.currentPageUsers = users;
+      users.forEach((user) => (state.usersById[user._id] = user));
+      state.currentPageUsers = users.map((user) => user._id);
       state.totalUsers = count;
       state.totalPages = totalPages;
     },
@@ -47,7 +50,8 @@ const slice = createSlice({
       state.error = null;
 
       const { users, count, totalPages } = action.payload;
-      state.currentPageUsers = users;
+      users.forEach((user) => (state.usersById[user._id] = user));
+      state.currentPageUsers = users.map((user) => user._id);
       state.totalUsers = count;
       state.totalPages = totalPages;
     },
@@ -56,45 +60,35 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
       const { targetUserId, ...friendship } = action.payload;
-      state.currentPageUsers = state.currentPageUsers.map((user) =>
-        user._id !== targetUserId ? user : { ...user, friendship }
-      );
+      state.usersById[targetUserId].friendship = friendship;
     },
 
     declineRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
       const { targetUserId, ...friendship } = action.payload;
-      state.currentPageUsers = state.currentPageUsers.map((user) =>
-        user._id !== targetUserId ? user : { ...user, friendship }
-      );
+      state.usersById[targetUserId].friendship = friendship;
     },
 
     acceptRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
       const { targetUserId, ...friendship } = action.payload;
-      state.currentPageUsers = state.currentPageUsers.map((user) =>
-        user._id !== targetUserId ? user : { ...user, friendship }
-      );
+      state.usersById[targetUserId].friendship = friendship;
     },
 
     cancelRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
       const { targetUserId } = action.payload;
-      state.currentPageUsers = state.currentPageUsers.map((user) =>
-        user._id !== targetUserId ? user : { ...user, friendship: null }
-      );
+      state.usersById[targetUserId].friendship = null;
     },
 
     removeFriendSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
       const { targetUserId } = action.payload;
-      state.currentPageUsers = state.currentPageUsers.map((user) =>
-        user._id !== targetUserId ? user : { ...user, friendship: null }
-      );
+      state.usersById[targetUserId].friendship = null;
     },
   },
 });
