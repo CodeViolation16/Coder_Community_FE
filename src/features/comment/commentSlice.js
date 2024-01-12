@@ -24,6 +24,12 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    resetPosts(state, action) {
+      state.commentsById = {};
+      state.commentsByPost = {};
+      state.totalCommentsByPost = {};
+      state.currentPageByPost = {};
+    },
 
     getCommentsSuccess(state, action) {
       state.isLoading = false;
@@ -119,3 +125,12 @@ export const sendCommentReaction =
       toast.error(error.message);
     }
   };
+
+export const deleteComment = (commentId) => async (dispatch) => {
+  try {
+    await apiService.delete(`/comments/${commentId}`);
+    dispatch(slice.actions.resetPosts());
+  } catch (error) {
+    toast.error(error.message);
+  }
+};

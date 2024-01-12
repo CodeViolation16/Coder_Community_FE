@@ -100,6 +100,25 @@ export const createPost =
       toast.error(error.message);
     }
   };
+export const deletePost = (postId) => async (dispatch) => {
+  try {
+    await apiService.delete(`/posts/${postId}`);
+    dispatch(slice.actions.resetPosts());
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const editPost = (postId, content) => async (dispatch) => {
+  console.log(postId, content)
+  try {
+    await apiService.put(`/posts/${postId}`, { content });
+    dispatch(slice.actions.resetPosts());
+    // You might want to dispatch an action after successful editing
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
 
 export const sendPostReaction =
   ({ postId, emoji }) =>
