@@ -1,21 +1,20 @@
-# CoderComm Frontend
+## Introduction
+This Social Media Clone is a full-featured social media application designed to mimic the core functionalities of popular social media platforms. To learn backend structure for compelex app. Users can create profiles, add friends, share posts, comment, and interact with other users' content. The application is built using the MERN stack (MongoDB, Express.js, React, Node.js) and aims to provide a seamless user experience with robust backend support. 
 
-A demo application for teaching the FTW course at CoderSchool.
+## Features
+- User authentication (sign up, log in, log out)
+- Profile creation and management
+- Adding and removing friends
+- Posting text and images
+- Liking and commenting on posts
+- Viewing and editing personal posts
+- Viewing friends' posts
+- Real-time updates with WebSockets
+- Notifications for friend requests and interactions
 
-## Get Started
-
-- Register for a [Cloudinary](https://cloudinary.com/) account. And create a **unsigned** upload preset: https://cloudinary.com/documentation/upload_presets
-
-- Create `/.env`:
-
-```
-REACT_APP_BACKEND_API="https://codercomm-api-dot-cs-platform-306304.et.r.appspot.com/api"
-REACT_APP_CLOUDINARY_CLOUD_NAME = 'cloudinary-cloud-name'
-REACT_APP_CLOUDINARY_UPLOAD_PRESET = 'cloudinary-upload-preset'
-```
-
-The upload preset of your cloudinary should be **unsigned**.
-
-- Run `npm install`
-
-The demo app is running on: https://codercomm-dot-cs-platform-306304.et.r.appspot.com
+## Technologies Used
+- **Frontend**: React, Redux, Styled-components
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose
+- **Authentication**: JWT (JSON Web Tokens)
+- **Real-time Communication**: WebSockets (Socket.io)
+- **Other Tools**: Neovim, VSCode, Git, GitHub
