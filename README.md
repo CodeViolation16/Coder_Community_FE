@@ -1,6 +1,8 @@
 ## Introduction
 This Social Media Clone is a full-featured social media application designed to mimic the core functionalities of popular social media platforms. To learn backend structure for compelex app. Users can create profiles, add friends, share posts, comment, and interact with other users' content. The application is built using the MERN stack (MongoDB, Express.js, React, Node.js) and aims to provide a seamless user experience with robust backend support. 
 
+The demo app is running on: https://codercomm-dot-cs-platform-306304.et.r.appspot.com
+
 ## Features
 - User authentication (sign up, log in, log out)
 - Profile creation and management
